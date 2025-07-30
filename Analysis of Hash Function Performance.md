@@ -1,5 +1,3 @@
-Of course. Here is the report formatted in Markdown, ready to be copied to your GitHub repository.
-
 ***
 
 # Analysis of Hash Function Performance
