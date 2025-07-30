@@ -1,5 +1,3 @@
-***
-
 # Analysis of Hash Function Performance
 
 > This report evaluates several performance-oriented and cryptographic hash functions based on their performance in a simulated hash table. The key metric is the total time required to insert 100,000 items at various load factor thresholds.
