@@ -68,26 +68,7 @@ Follow these steps to set up your environment and run the simulations.
   * Python 3.8+
   * `uv` (or `pip` and `venv`)
 
-### 2\. Environment Setup
-
-It is highly recommended to use a virtual environment.
-
-```bash
-# Clone the repository (if you haven't already)
-git clone <your-repo-url>
-cd <your-repo-name>
-
-# Create a virtual environment
-python -m venv .venv
-
-# Activate the environment
-# On macOS / Linux:
-source .venv/bin/activate
-# On Windows:
-.venv\Scripts\activate
-```
-
-### 3\. Install Dependencies
+### 2\. Install Dependencies
 
 This project uses a `pyproject.toml` file to manage dependencies.
 
@@ -105,7 +86,7 @@ You can also install the dependencies using `pip`.
 pip install .
 ```
 
-### 4\. Run an Experiment
+### 3\. Run an Experiment
 
 Run any of the experiment scripts. A `.png` image of the resulting chart will be saved in the project directory.
 

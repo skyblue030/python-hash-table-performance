@@ -4,7 +4,7 @@ import random
 import mmh3
 import xxhash
 import hashlib
-import blake3 # New import
+import blake3 
 
 class SimulatedHashTable:
     def __init__(self, load_factor_threshold=0.8, hash_function_name='python_default'):
@@ -60,7 +60,7 @@ class SimulatedHashTable:
         self.slots[index] = item
         self.item_count += 1
 
-# --- Experiment Setup ---
+
 NUM_ITEMS_TO_INSERT = 100000
 items_to_insert = [random.randint(-10000000, 10000000) for _ in range(NUM_ITEMS_TO_INSERT)]
 LOAD_FACTORS_TO_TEST = [0.5, 0.6, 0.7, 0.8, 0.9, 0.95, 0.99]
@@ -81,10 +81,10 @@ for func_name in HASH_FUNCTIONS_TO_TEST:
         results[func_name].append(end_time - start_time)
     print(f"...done.")
 
-# --- Visualization ---
+
 plt.figure(figsize=(14, 8))
 
-crypto_hashes = {'sha256', 'blake3'} # Added blake3
+crypto_hashes = {'sha256', 'blake3'} 
 
 for func_name, times in results.items():
     if func_name in crypto_hashes:

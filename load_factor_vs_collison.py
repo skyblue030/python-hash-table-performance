@@ -10,7 +10,7 @@ class SimulatedHashTable:
         self.slots = [None] * self.size
         self.item_count = 0
         self.resize_count = 0
-        self.collision_count = 0 # New: to track collision probes
+        self.collision_count = 0 
 
     def _resize(self):
         """Simulates the costly O(n) reallocation and copy."""
@@ -22,34 +22,31 @@ class SimulatedHashTable:
         self.size = new_size
         self.slots = [None] * new_size
         self.item_count = 0
-        self.collision_count = 0 # Reset collisions after resize
+        self.collision_count = 0 
         
-        # Re-hash all old items into the new, larger table
+        
         for item in old_slots:
             if item is not None:
                 self.insert(item)
 
     def insert(self, item):
         """Inserts an item using a hash, handles collisions, and resizes."""
-        # Check if a resize is needed BEFORE adding the new item
+        
         if (self.item_count + 1) / self.size > self.load_factor_threshold:
             self._resize()
         
-        # Use Python's built-in hash() function to find the initial slot
+        
         index = hash(item) % self.size
         
-        # --- Linear Probing for Collisions ---
-        # If the slot is already taken, probe forward to find an empty one.
+        
         while self.slots[index] is not None:
             self.collision_count += 1
-            index = (index + 1) % self.size # Wrap around if we reach the end
+            index = (index + 1) % self.size 
             
-        # Place item in the found empty slot
+
         self.slots[index] = item
         self.item_count += 1
 
-# --- Experiment Setup ---
-# Use random numbers to ensure we get collisions
 NUM_ITEMS_TO_INSERT = 200000
 items_to_insert = [random.randint(0, 10000000) for _ in range(NUM_ITEMS_TO_INSERT)]
 
@@ -59,7 +56,7 @@ results = {}
 
 print("Running experiments with collision simulation...")
 
-# --- Run Experiment for each Load Factor ---
+
 for lf in LOAD_FACTORS_TO_TEST:
     table = SimulatedHashTable(load_factor_threshold=lf)
     
@@ -77,7 +74,6 @@ for lf in LOAD_FACTORS_TO_TEST:
     print(f"Load Factor: {lf:.2f} -> Time: {total_time:.4f}s, Collisions: {table.collision_count}")
 
 
-# --- Visualization ---
 load_factors = list(results.keys())
 times = [res["time"] for res in results.values()]
 
